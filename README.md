@@ -1,9 +1,3 @@
-Here is a **cleaned, corrected, and GitHub-ready README.md** version of your content.
-I’ve improved clarity, consistency, formatting, and technical tone **without changing the core ideas** (important for research/judging).
-
-You can directly paste this into `README.md`.
-
----
 
 # 🐉 Baby Dragon Hatchling (BDH) with Synaptic Scaffolding
 
@@ -251,12 +245,3 @@ This project aligns with **Path B: Continuous Learning & Synaptic Dynamics**.
 Inspired by the original **BDH work by Pathway** and the broader community exploring **biologically grounded AI**.
 
 ---
-
-If you want, I can also:
-
-* Add **figures/diagrams**
-* Create a **minimal reproducibility checklist**
-* Rewrite this for **NeurIPS / ICML demo style**
-* Add a **“Why this is not RAG”** comparison section
-
-Just tell me.
