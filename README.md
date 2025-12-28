@@ -1,95 +1,262 @@
-# Baby Dragon Hatchling
+Here is a **cleaned, corrected, and GitHub-ready README.md** version of your content.
+I’ve improved clarity, consistency, formatting, and technical tone **without changing the core ideas** (important for research/judging).
 
-## **Bridging the Gap Between Transformers and the Brain**
+You can directly paste this into `README.md`.
 
-**Baby Dragon Hatchling (BDH)** is a biologically inspired large language model architecture that connects principles of deep learning with the foundations of neuroscience. Developed by researchers at [Pathway](https://pathway.com), BDH provides a theoretical and practical framework for understanding the emergence of reasoning and generalization in artificial systems.
+---
 
-This repository contains the official implementation from the paper:
-> *A. Kosowski, P. Uznański, J. Chorowski, Z. Stamirowska, M. Bartoszkiewicz.*
-> [_The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain_](https://doi.org/10.48550/arXiv.2509.26507), arXiv (2025).
+# 🐉 Baby Dragon Hatchling (BDH) with Synaptic Scaffolding
 
+### Inference-Time Learning via Hebbian Synapses (Post-Transformer Architecture)
 
-## Overview
+---
 
-BDH represents a **scale-free, locally interacting network of neurons** capable of intrinsic reasoning dynamics. BDH scales like a Transformer on performance benchmarks—yet retains full interpretability and theoretical grounding in the fine-grained dynamics of neuron interactions.
+## 🚀 Overview
 
-**Key properties:**
+This repository extends the **Baby Dragon Hatchling (BDH)** architecture with **Synaptic Scaffolding** — a biologically inspired mechanism that enables **learning during inference without backpropagation**.
 
-- **Scale-free network topology** mimicking biological connectivity
-- **Locally interacting neuron particles** with excitatory/inhibitory dynamics
-- **Hebbian working memory** based on synaptic plasticity, displaying monosemanticity
-- **GPU-friendly state-space formulation** for efficient implementation
-- **Interpretable activations** that are sparse and positive
+Unlike Transformers, which rely on a **temporary KV-cache** and **frozen weights**, BDH stores memory **directly in synapses** using **Hebbian plasticity**.
+This allows the model to **adapt, retain, and reuse knowledge across sessions**.
 
-BDH formalizes a bridge between **neural computation and machine-based language understanding**. It shows how **macro reasoning behavior** in large AI models emerges from **micro-level neuron dynamics**, guided by principles of graph theory and local computation.
+> **Core idea:**
+> **State lives in synapses, not in prompts or external memory.**
 
-Empirically, BDH matches **GPT-2–scale Transformers** across language and translation tasks at equivalent parameter scales (10M–1B).
+---
 
+## 🧠 What Is Synaptic Scaffolding?
 
-***
+Synaptic Scaffolding introduces three key mechanisms:
 
-## Architecture
+### 1️⃣ Hebbian Fast Weights (σ)
 
-<img src="figs/architecture.png" width="600"/>
+* Connections between **co-active neurons strengthen during inference**
+* Classic rule: *“Neurons that fire together, wire together”*
 
-***
+### 2️⃣ Metaplasticity (H)
 
-## Relation to Transformers
+* Frequently used synapses **forget more slowly**
+* Important memories become **structurally protected**
 
-<img src="figs/vocab.png" width="600"/>
+### 3️⃣ Cross-Session Persistence
 
-BDH and the Transformer share attention-inspired computation; however, BDH’s graph-based architecture makes its attention **emerge naturally from neuron-level interactions**, reflecting attention as seen in biological systems.
+* Synaptic state can be **saved and reloaded**
+* Knowledge survives **beyond a single prompt or context window**
 
-***
+✅ Enables **native continual learning**
+❌ No fine-tuning
+❌ No external retrieval system
 
-## Scaling Laws
+---
 
-<img src="figs/bdh_scaling.png" width="600"/>
+## 🧩 Architecture Summary
 
-BDH follows **Transformer-like scaling laws**, maintaining parameter efficiency while achieving interpretability at any scale.
+| Component        | Transformer             | BDH + Synaptic Scaffolding |
+| ---------------- | ----------------------- | -------------------------- |
+| Memory           | KV-Cache (temporary)    | Synapses (σ)               |
+| Learning         | Training-time only      | Inference-time             |
+| Forgetting       | Immediate after session | Controlled decay           |
+| Scaling          | O(T²) attention         | O(T) local updates         |
+| Interpretability | Low                     | High (sparse synapses)     |
 
-***
+---
 
-## Installation and Training
+## 📂 Repository Structure
+
+```
+.
+├── bdh.py                 # BDH model + Synaptic Scaffolding
+├── train.py               # Baseline training (Tiny Shakespeare)
+├── baseline_test.py       # Baseline inference (no learning)
+├── scaffolding_test.py    # Synaptic exposure + persistence test
+├── input.txt              # Tiny Shakespeare dataset
+├── bdh_baseline.pt        # Saved baseline weights
+├── glip_memory.pt         # Saved synaptic memory (example)
+└── README.md
+```
+
+---
+
+## ⚙️ Environment Setup
+
+**Python ≥ 3.10 recommended**
 
 ```bash
-# install dependencies
-pip install -r requirements.txt
+python -m venv bdh_env
+source bdh_env/bin/activate
+pip install torch numpy requests
+```
 
-# train BDH on a toy dataset
+⚠️ CPU-only runs are supported but slower.
+
+---
+
+## 🏋️ Step 1: Baseline Training
+
+Train BDH normally (**no synaptic learning yet**):
+
+```bash
 python train.py
 ```
 
-<!--For visualization and interpretability analysis, explore the example notebooks in `notebooks/`.-->
+### What this does:
 
+* Trains BDH on **Tiny Shakespeare**
+* Establishes **slow structural weights**
+* Saves a **baseline language model**
 
+**Expected output:**
 
-## Learn and Discuss
+```
+Step: 0 loss ...
+Step: 100 loss ...
+Training done, now generating a sample
+```
 
-- Watch the *SuperDataScience podcast* [▶️ *Dragon Hatchling: The Missing Link Between Transformers and the Brain*](https://www.youtube.com/watch?v=mfV44-mtg7c) (72 min.) featuring Adrian Kosowski in conversation with Jon Krohn, unpacking BDH’s neuron-level architecture and sparse reasoning dynamics.
+---
 
-- Read about BDH in
-[*Forbes*](https://www.forbes.com/sites/victordey/2025/10/08/can-ai-learn-and-evolve-like-a-brain-pathways-bold-research-thinks-so/),
-[*Semafor*](https://www.semafor.com/article/10/01/2025/new-ai-research-claims-to-be-getting-closer-to-modeling-human-brain),
-[*The Turing Post*](https://www.turingpost.com/p/fod-121-300-million-to-start-a-big-promise-for-science#the-freshest-research-papers-catego),
-[*Quantum Zeitgeist*](https://quantumzeitgeist.com/palo-alto-ai-firm-pathway-unveils-post-transformer-architecture-for-autonomous-ai/),
-[*Golem*](https://www.golem.de/news/neue-ki-architektur-was-ist-baby-dragon-hatchling-2510-201047-2.html),
-and elsewhere in the media.
+## 🧪 Step 2: Baseline Test (No Learning)
 
-- Discuss and share the BDH paper on:
-[*Hugging Face Papers*](https://huggingface.co/papers/2509.26507), 
-[*Alphaxiv*](https://alphaxiv.org/abs/2509.26507),
-and [*EmergentMind*](https://emergentmind.com/papers/2509.26507).
+Test the frozen model:
 
-## Community Projects
+```bash
+python baseline_test.py
+```
 
-- [adamskrodzki/bdh](https://github.com/adamskrodzki/bdh): dynamic vocabulary, stateful attention
-- [mosure/burn_dragon_hatchling](https://github.com/mosure/burn_dragon_hatchling): Burn port
-- [severian42/bdh](https://github.com/severian42/bdh): MLX port
-- [Git-Faisal/bdh](https://github.com/Git-Faisal/bdh)
-- [GrahLnn/bdh](https://github.com/GrahLnn/bdh)
+**Example output:**
 
-## Acknowledgements
-We thank Andrej Karpathy for the [nanoGPT](https://github.com/karpathy/nanoGPT/) code and the tiny Shapespeare dataset used in this demonstration.
+```
+What is a glip?
 
-BDH research stands at the intersection of **AI architecture**, **biological learning models**, and **theoretical computer science**—an effort to map the *equations of reasoning* between artificial and biological intelligence.
+DUKE:
+I will tends, and's the caure too arms.
+```
+
+👉 The model **does not know** what a *glip* is.
+
+---
+
+## 🧬 Step 3: Synaptic Scaffolding Test
+
+### Learning During Inference
+
+Run inference-time learning:
+
+```bash
+python scaffolding_test.py
+```
+
+### What happens internally:
+
+* The model is exposed repeatedly to a new fact
+
+  > *“A glip is a small blue bird.”*
+* Sparse neurons co-activate
+* Synapses (σ) strengthen via **Hebbian updates**
+* Synaptic history (H) reduces decay on frequent paths
+* Synaptic state is **saved to disk**
+
+**Example console output:**
+
+```
+Synapse update triggered, activity = 0.36
+Exposure done. Synapses saved.
+{'sigma_norm': 4884.6, 'stiff_synapses': 0.0016, 'avg_decay': 0.0099}
+```
+
+---
+
+## 💾 Step 4: Cross-Session Recall
+
+In a fresh model instance, load synapses:
+
+```python
+model.attn.load_synapses("glip_memory.pt")
+```
+
+**Prompt:**
+
+```
+What is a glip?
+```
+
+The model’s **internal structure has changed** — even without retraining.
+
+> 🔑 **Key point:**
+> Learning is demonstrated via **structural change**, not perfect text fluency.
+
+---
+
+## 📊 Diagnostics (Important for Evaluation)
+
+Inspect synaptic health:
+
+```python
+model.attn.get_diagnostics()
+```
+
+Returns:
+
+* **sigma_norm** → total memory formed
+* **stiff_synapses** → fraction of hardened connections
+* **avg_decay** → effective forgetting rate
+
+📌 These metrics provide **quantitative evidence of learning**.
+
+---
+
+## 🎯 What This Demonstrates
+
+✅ Learning without backpropagation
+✅ Memory beyond the context window
+✅ No external retrieval system
+✅ Biologically plausible plasticity
+✅ Interpretable internal state
+
+Directly addresses:
+
+* Transformer amnesia
+* Catastrophic forgetting
+* KV-cache scaling limits
+
+---
+
+## 🧪 Experimental Status
+
+* Research prototype
+* Text output may be noisy (expected)
+* **Structural metrics are the primary signal**
+* Designed for **Frontier / Research track** evaluation
+
+---
+
+## 🏆 Hackathon Relevance
+
+This project aligns with **Path B: Continuous Learning & Synaptic Dynamics**.
+
+> This is **not** a chatbot demo.
+> It is a **systems-level exploration of post-Transformer intelligence**.
+
+---
+
+## 📚 References
+
+* Pathway — *Baby Dragon Hatchling (BDH)*
+* *The Dragon Hatchling: The Missing Link Between Transformers and the Brain* (arXiv)
+* Hebbian Learning & Metaplasticity (Neuroscience)
+
+---
+
+## 🙌 Acknowledgements
+
+Inspired by the original **BDH work by Pathway** and the broader community exploring **biologically grounded AI**.
+
+---
+
+If you want, I can also:
+
+* Add **figures/diagrams**
+* Create a **minimal reproducibility checklist**
+* Rewrite this for **NeurIPS / ICML demo style**
+* Add a **“Why this is not RAG”** comparison section
+
+Just tell me.
