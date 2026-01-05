@@ -1,11 +1,11 @@
 
-# 🐉 Baby Dragon Hatchling (BDH) with Synaptic Scaffolding
+#  Baby Dragon Hatchling (BDH) with Synaptic Scaffolding
 
 ### Inference-Time Learning via Hebbian Synapses (Post-Transformer Architecture)
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This repository extends the **Baby Dragon Hatchling (BDH)** architecture with **Synaptic Scaffolding** — a biologically inspired mechanism that enables **learning during inference without backpropagation**.
 
@@ -17,7 +17,7 @@ This allows the model to **adapt, retain, and reuse knowledge across sessions**.
 
 ---
 
-## 🧠 What Is Synaptic Scaffolding?
+## What Is Synaptic Scaffolding?
 
 Synaptic Scaffolding introduces three key mechanisms:
 
@@ -42,7 +42,7 @@ Synaptic Scaffolding introduces three key mechanisms:
 
 ---
 
-## 🧩 Architecture Summary
+##  Architecture Summary
 
 | Component        | Transformer             | BDH + Synaptic Scaffolding |
 | ---------------- | ----------------------- | -------------------------- |
@@ -54,7 +54,7 @@ Synaptic Scaffolding introduces three key mechanisms:
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -70,7 +70,7 @@ Synaptic Scaffolding introduces three key mechanisms:
 
 ---
 
-## ⚙️ Environment Setup
+## Environment Setup
 
 **Python ≥ 3.10 recommended**
 
@@ -84,7 +84,7 @@ pip install torch numpy requests
 
 ---
 
-## 🏋️ Step 1: Baseline Training
+## Step 1: Baseline Training
 
 Train BDH normally (**no synaptic learning yet**):
 
@@ -108,7 +108,7 @@ Training done, now generating a sample
 
 ---
 
-## 🧪 Step 2: Baseline Test (No Learning)
+## Step 2: Baseline Test (No Learning)
 
 Test the frozen model:
 
@@ -129,7 +129,7 @@ I will tends, and's the caure too arms.
 
 ---
 
-## 🧬 Step 3: Synaptic Scaffolding Test
+## Step 3: Synaptic Scaffolding Test
 
 ### Learning During Inference
 
@@ -159,7 +159,7 @@ Exposure done. Synapses saved.
 
 ---
 
-## 💾 Step 4: Cross-Session Recall
+## Step 4: Cross-Session Recall
 
 In a fresh model instance, load synapses:
 
@@ -175,12 +175,12 @@ What is a glip?
 
 The model’s **internal structure has changed** — even without retraining.
 
-> 🔑 **Key point:**
+>  **Key point:**
 > Learning is demonstrated via **structural change**, not perfect text fluency.
 
 ---
 
-## 📊 Diagnostics (Important for Evaluation)
+## Diagnostics (Important for Evaluation)
 
 Inspect synaptic health:
 
@@ -194,11 +194,11 @@ Returns:
 * **stiff_synapses** → fraction of hardened connections
 * **avg_decay** → effective forgetting rate
 
-📌 These metrics provide **quantitative evidence of learning**.
+These metrics provide **quantitative evidence of learning**.
 
 ---
 
-## 🎯 What This Demonstrates
+## What This Demonstrates
 
 ✅ Learning without backpropagation
 ✅ Memory beyond the context window
@@ -214,7 +214,7 @@ Directly addresses:
 
 ---
 
-## 🧪 Experimental Status
+## Experimental Status
 
 * Research prototype
 * Text output may be noisy (expected)
@@ -223,7 +223,7 @@ Directly addresses:
 
 ---
 
-## 🏆 Hackathon Relevance
+## Hackathon Relevance
 
 This project aligns with **Path B: Continuous Learning & Synaptic Dynamics**.
 
@@ -232,7 +232,7 @@ This project aligns with **Path B: Continuous Learning & Synaptic Dynamics**.
 
 ---
 
-## 📚 References
+## References
 
 * Pathway — *Baby Dragon Hatchling (BDH)*
 * *The Dragon Hatchling: The Missing Link Between Transformers and the Brain* (arXiv)
@@ -240,7 +240,7 @@ This project aligns with **Path B: Continuous Learning & Synaptic Dynamics**.
 
 ---
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 Inspired by the original **BDH work by Pathway** and the broader community exploring **biologically grounded AI**.
 
